@@ -1,0 +1,3 @@
+test = "aaaaaa"
+puts test;
+
