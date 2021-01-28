@@ -52,9 +52,12 @@ p text.split(',')
 
 p text.split(/,|-/)
 
+text = '123,456-789'
+
+hash = { ',' => ':', '-' => '/'}
+
+p text.gsub(/,|-/,hash)
 
 text = '123,456-789'
 
-p text.gsub(',',':')
-
-p text3.gsub(/(\d+)年(\d+)月(\d+)日/, '\1-\2-\3')
+p text.gsub(/,|-/) { |matched| matched == ',' ? ':' : '/'}
