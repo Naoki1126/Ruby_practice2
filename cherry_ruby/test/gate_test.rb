@@ -1,7 +1,7 @@
 require 'minitest/autorun'
-require './gete'
+require './gate'
 
-class GateTest < Minitest::GateTest
+class GateTest < Minitest::Test
     def test_gete
         assert Gate.new
     end
