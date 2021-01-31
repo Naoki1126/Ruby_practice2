@@ -43,3 +43,5 @@ class Foo
     end
 end
 
+Foo.bar #=> NoMethod
+
