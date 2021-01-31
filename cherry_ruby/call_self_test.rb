@@ -45,3 +45,28 @@ end
 
 Foo.bar #=> NoMethod
 
+user = User.new
+user.to_s
+user.nil? # objectクラスを継承しているため、メソッドが使える。
+User.superclass #=> Object
+
+user.methods.sort #=> [:!, :!=, :!~, :<=>, :==, (省略) :untrust, :untrasted?]
+
+
+user.instance_of?(User) #=> true
+
+user.instance_of?(String) #=> false
+
+#instance_of?はクラスがまったく同じでないとtrueにならない
+user.instance_of(Object) #=> false
+
+#is_a? メソッド 継承関係にあるかどうか
+
+ user.is_a(User)  #=> true
+ user.is_a(Object) #=> true
+ user.is_a??(BasicObject) #=> true
+
+ #is_a関係にない場合はfalse
+ user.is_a?(String) #=> false
+ 
+
