@@ -208,4 +208,37 @@ bob.heavier_than?(alice) #=> true  (after protected)
 
 #クラスの外ではweightは呼び出せない
 alice.weight #=> NomethodError: proteceted method "weight"
-        
+
+class Parent
+    def initialize
+        @first = 1
+        @second = 2
+        @third = 3
+    end
+
+    def number
+        "#{@first}.#{@second}.#{@third}" #毎回1.2.3という文字列がかえるはず(?)
+    end
+end
+
+class Child < Parent
+    def initialize
+        super
+        @hour = 6
+        @minitu = 30
+        #偶然スーパークラスと同じ名前のインスタンス変数を使ってしまった。
+        @second = 59
+    end
+
+    def time
+        "#{@hour}:#{@minute}:#{@second}"
+    end
+end
+
+parent = Parent.new
+parent.number = #=> 1.2.3
+
+child = Child.new
+child.time #=> 6:30:59
+
+child.nunber #=> "1.59.3" => 変数の上書きが起きた。
