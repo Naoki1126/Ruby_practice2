@@ -74,3 +74,12 @@ class Product
     #map メソッドで各要素をfreezeし、最後にmapメソッドの戻り値の配列をfreezeする
     SOME_NAMES = ["Foo","Bar","Baz"].map(&:freeze).freeze
 end
+
+class Product
+    #数値やシンボル、true/falseはfreeze不要（しても構わないが、意味が無い)
+    SOME_VALUE = 0
+    SOME_TYPE = :foo
+    SOME_FLAG = true
+end
+
+#Rubyの定数は「絶対変更できない値」ではなく、定数であっても「変更しようとすればいくらでもできる」
