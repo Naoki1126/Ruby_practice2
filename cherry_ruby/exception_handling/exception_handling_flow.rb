@@ -31,4 +31,3 @@ method_1
 # method_1 end
 
 #method1→method2
-
