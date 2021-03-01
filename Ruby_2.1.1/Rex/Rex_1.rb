@@ -612,14 +612,70 @@
 
 # question ~30
 
-10.times{|d| print d < 2...d > 5 ? "O" : "X" } #=> OOOOOOOXXX
+# 10.times{|d| print d < 2...d > 5 ? "O" : "X" } #=> OOOOOOOXXX
 
-(1..10).each do |d|
-  if d < 2...d > 5
-    puts "O"
-  else
-   puts "X"
-  end
-end
+# (1..10).each do |d|
+#   if d < 2...d > 5
+#     puts "O"
+#   else
+#    puts "X"
+#   end
+# end
+
+
+#まずは式1が真を返すとtrue返す
+#式2が真を返すかまではtrueを返す
+#式が真を返すとtrueを返し初期状態に戻る
 
 # question ~31
+
+# def m1(*)
+#   str = yield if block_given?
+#   p "m1 #{str}"
+# end
+
+# def m2(*)
+#   str = yield if block_given?
+#   p "m2 #{str}"
+# end
+
+# m1 m2 {
+#   "hello"
+# }
+
+#m1には引数としてmdが渡されるためブロックは実行されない
+#m2がブロックを実行。{} の方が結合度が高いため、下記のような出力になる。
+
+#=> "m2 hello"
+#=> "m1 "
+
+
+# class Company
+#   attr_reader :id
+#   attr_accessor :name
+#   def initialize id, name
+#     @id = id
+#     @name = name
+#   end
+#   def to_s
+#     "#{id}:#{name}"
+#   end
+#   def <=> other
+#     other.id <=> self.id
+#   end
+# end
+
+# companies = []
+# companies << Company.new(2, 'Liberyfish')
+# companies << Company.new(3, 'Freefish')
+# companies << Company.new(1, 'Freedomfish')
+
+# companies.sort!
+
+# companies.each do |e|
+#   puts e
+# end
+
+#=> 3:Freefish
+#=> 2:Liberyfish
+#=> 1:Freedomfish
