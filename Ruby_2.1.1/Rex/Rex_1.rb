@@ -670,7 +670,7 @@
 # companies << Company.new(3, 'Freefish')
 # companies << Company.new(1, 'Freedomfish')
 
-# companies.sort!
+# companies.sort
 
 # companies.each do |e|
 #   puts e
@@ -679,3 +679,220 @@
 #=> 3:Freefish
 #=> 2:Liberyfish
 #=> 1:Freedomfish
+
+# val = 1 * 1i
+# puts val.class #=> complex
+
+#li complex class
+#片方がcomplexであればcomplex class
+
+# def bar(&block)
+#   block.yield
+# end
+
+# bar do
+#   puts "hello, world"
+# end
+
+# def bar(&block)
+#   block.call
+# end
+
+# bar do
+#   puts "hello, world"
+# end
+
+
+#########Error############
+# def bar(&block, n)
+#   block.call
+# end
+
+# bar(5) {
+#   puts "hello, world"
+# }
+
+#＆のブロック引数は最後に記述する
+############################
+
+# def bar(n, &block)
+#   block.call
+# end
+
+# bar(5) {
+#   puts "hello, world"
+# }
+
+# module SuperMod
+#   module BaseMod
+#     p Module.nesting #=> [SuperMod::BaseMod, SuperMod] inner→outer
+#   end
+# end
+
+# module SuperMod
+#   p Module.nesting #=> [SuperMod]
+
+#   module BaseMod
+#     p Module.nesting #=> [SuperMod::BaseMod, SuperMod]
+
+#     module BaseBaseMod
+#       p Module.nesting #=> [SuperMod::BaseMod::BaseBaseMod, SuperMod::BaseMod, SuperMod]
+#     end
+#   end
+# end
+
+
+# while not DATA.eof?
+#   print DATA.read
+# end
+
+# __END__
+# 1
+# 2
+# 3
+# 4
+
+
+# class C
+# end
+
+# module M
+#   refine C do
+#     def m1(value)
+#       puts 'moduleM'
+#       super value - 100
+#     end
+#   end
+# end
+
+# class C
+#   def m1(value)
+#     puts 'ClassC'
+#     value - 100
+#   end
+# end
+
+# using M
+
+# class K < C
+#   def m1(value)
+#     puts 'ClassK'
+#     super value - 100
+#   end
+# end
+
+# puts K.new.m1 400
+
+# # ClassK
+# # moduleM
+# # ClassC
+# # 100
+
+# p "Matz is | my tEacher".scan(/[is|my]/).length
+# #=> 5
+
+#=>[]は囲まれた文字列一つ一つにマッチする
+#=> |は正規表現でORのメタ文字だが、[]に囲まれているため、今回はscanの対象となる。
+
+
+# class Company
+#   attr_reader :id
+#   attr_accessor :name
+#   def initialize id, name
+#     @id = id
+#     @name = name
+#   end
+#   def to_s
+#     "#{id}:#{name}"
+#   end
+#   def <=> other
+#     self.id <=> other.id
+#   end
+# end
+
+# companies = []
+# companies << Company.new(2, 'Liberyfish')
+# companies << Company.new(3, 'Freefish')
+# companies << Company.new(1, 'Freedomfish')
+
+# companies.sort! {|x,y|
+#   y <=> x
+# }
+
+# companies.each do |e|
+#   puts e
+# end
+
+#　先にselfが来れば昇順、逆なら降順
+
+# begin
+#   raise "Err!"
+# rescue => e
+#   puts e.class #=> RuntimeError
+#   puts e.class.superclass #=> StandardError
+# end
+
+# module K
+#   CONST = "Good, night"
+#   class P
+    
+#   end
+# end
+
+# module K::P::M
+#   class C
+#     CONST = "Good, evening"
+#   end
+# end
+
+# module M
+#   class C
+#     CONST = "Hello, world"
+#   end
+# end
+
+# class K::P
+#   class M::C
+#     p CONST
+#   end
+# end
+
+#=> Good, evening
+
+# class S
+#   def initialize
+#     puts "S#initialize"
+#   end
+# end
+
+# class C < S
+#   def initialize(*args)
+#     super #=> argumentError
+#     super() #=> 引数なしで呼び出せる
+#     puts "C#initialize"
+#   end
+# end
+
+# C.new(1,2,3,4,5)
+
+# class C
+#   CONST = "Good, night"
+# end
+
+# module M
+#   CONST = "Good, evening"
+# end
+
+# module M
+#   class C
+#     CONST = "Hello, world"
+#   end
+# end
+
+# module M
+#   class ::C
+#     p CONST #=> Good,night ::Cはトップレベルのクラス
+#   end
+# end
+
+############ question ~45
