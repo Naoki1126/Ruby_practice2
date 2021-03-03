@@ -896,3 +896,65 @@
 # end
 
 ############ question ~45
+
+# m = Module.new
+
+# CONST = "Constant in Toplevel"
+
+# _proc = Proc.new do
+#   CONST = "Constant in Proc"
+# end
+
+# m.instance_eval(<<-EOS)
+#   CONST = "Constant in Module instance"
+
+#   def const
+#     CONST
+#   end
+# EOS
+
+# m.module_eval(&_proc)
+
+# p m.const
+#=> instance_eval オブジェクトの特異クラスにインスタンスメソッドを定義したり、そのオブジェクト地震が参照できるインスタンス変数（定数）を定義できる。
+#=> "Constant in Module instance"
+
+# array = ["a", "b", "c"].freeze
+
+# array.each do |chr|
+#   chr.upcase!
+# end
+
+# p array #=> [A,B,C]
+#freezeを配列全体にかけても要素単位ではfreezeされない
+#配列全体に影響、要素を追加しようとするなどすると例外が発生する。
+
+
+# class Base
+#   def name
+#     p 'Base#name'
+#   end
+# end
+
+# module Scope
+#   class Base
+#     def name
+#       p 'Scope::Base#name'
+#     end
+#   end
+
+#   class Inherited < Base
+#     def name
+#       p 'Scope::Inherited#name'
+#       super
+#     end
+#   end
+# end
+
+# inherited = Scope::Inherited.new
+# inherited.name
+
+# "Scope::Inherited#name"
+# "Scope::Base#name"
+
+# p Object.methods
