@@ -502,3 +502,333 @@
 
 # 10.times{|d| print d < 2...d > 5 ? "O" : "X" }
 #=> OOOOOOOXXX
+
+# def foo(arg1:100, arg2:200)
+#   puts arg1
+#   puts arg2
+# end
+
+# option = {arg2: 900}
+
+# foo arg1: 200, **option
+
+# #=> 200
+# #=> 900
+
+# class Integer
+#   def +(other)
+#     self.-(other)
+#   end
+# end
+
+# p 1 + 1 #=> 2
+
+# p 1.class.ancestors #=> [Fixnum, Integer, Numeric, Comparable, Object, Kernel, BasicObject]
+# p Numeric.method_defined?(:+) #=> false
+# p Integer.method_defined?(:+) #=> false
+# p Fixnum.method_defined?(:+)  #=> true
+
+# class Fixnum
+#   def +(other)
+#     self.-(other)
+#   end
+# end
+
+# p 1 + 1 #=> 0
+
+# module M
+#   @@val = 75
+
+#   class Parent
+#     @@val = 100
+#   end
+
+#   class Child < Parent
+#     @@val += 50
+#   end
+
+#   if Child < Parent
+#     @@val += 25
+#   else
+#     @@val += 30
+#   end
+# end
+
+# p M::Child.class_variable_get(:@@val) #=> 150
+
+# val = 1i * 1i
+# puts val.class #=> complex
+
+# def bar(&block)
+#   block.yield
+# end
+
+# bar do
+#   puts "hello, world"
+# end
+
+# def bar(&block)
+#   block.call
+# end
+
+# bar do
+#   puts "hello, world"
+# end
+
+# def bar(n, &block)
+#   block.call
+# end
+
+# bar(5) {
+#   puts "hello, world"
+# }
+
+# def bar(&block, n) #=> 引数の順が逆のためエラーが出る。
+#   block.call
+# end
+
+# bar(5) {
+#   puts "hello, world"
+# }
+
+
+# class Class
+#   def method_missing(id, *args)
+#     puts "Class#method_missing"
+#   end
+# end
+# class A
+#   def method_missing(id, *args)
+#     puts "A#method_missing"
+#   end
+# end
+# class B < A
+#   def method_missing(id, *args)
+#     puts "B#method_missing"
+#   end
+# end
+
+# B.dummy_method #=> "Class#method_mission"
+# # 継承チェーンをたどる。class B < class A < class Class
+
+# class Human
+#   NAME = "Unknown"
+
+#   def name
+#     NAME
+#   end
+# end
+
+# class Noguchi < Human
+#   NAME = "Hideyo"
+# end
+
+# puts Noguchi.new.name #=> Unknown
+
+# begin
+#   raise
+# rescue => e
+#   puts e.class #=> Runtime Error
+# end
+
+# module K
+#   CONST = "Good, night"
+#   class P
+#   end
+# end
+
+# module K::P::M
+#   class C
+#     CONST = "Good, evening"
+#   end
+# end
+
+# module M
+#   class C
+#     CONST = "Hello, world"
+#   end
+# end
+
+# class K::P
+#   class M::C
+#     p CONST #=> Good evening
+#   end
+# end
+
+
+# val = 100
+
+# def method(val)
+#   p val #=> 100
+#   ## blockの戻り値が115  
+#   yield(15+ val)
+# end
+
+# _proc = Proc.new{|arg| val + arg } #=> 115 val = 100 arg =15
+
+# p method(val, &_proc)
+
+# fiber = Fiber.new do
+#   Fiber.yield 'Hi, there!'
+# end
+
+# p fiber.resume #=> Hi, there
+
+
+# m = Module.new
+
+# CONST = "Constant in Toplevel"
+
+# _proc = Proc.new do
+#   CONST = "Constant in Proc"
+# end
+
+# m.instance_eval(<<-EOS)
+#   CONST = "Constant in Module instance"
+
+#   def const
+#     CONST
+#   end
+# EOS
+
+# m.module_eval(&_proc)
+
+# p m.const
+
+# module M
+#   def self.a
+#     100
+#   end
+# end
+
+# p M.a #=> 100
+
+# # module M
+# #   include self
+# #   def a
+# #     100
+# #   end
+# # end
+
+# # p M.a
+
+# module M
+#   extend self
+#   def a
+#     100
+#   end
+# end
+
+# p M.a #=> 100
+
+# module M
+#   class << self
+#     def a
+#       100
+#     end
+#   end
+# end
+
+# p M.a #=> 100
+
+# mod = Module.new
+
+# mod.module_eval do
+#   EVAL_CONST = 100
+# end
+
+# puts "EVAL_CONST is defined? #{mod.const_defined?(:EVAL_CONST, false)}" #=> false
+# puts "EVAL_CONST is defined? #{Object.const_defined?(:EVAL_CONST, false)}" #=> true
+
+# class C
+#   def self._singleton
+#     class << C
+#       self
+#     end
+#   end
+# end
+
+# p C._singleton
+
+# # class C
+# #   def self._singleton
+# #     class << C
+# #       val = self
+# #     end
+# #     val
+# #   end
+# # end
+
+# # p C._singleton
+
+# class C
+# end
+
+# def C._singleton
+#   self
+# end
+
+# p C._singleton
+
+# class C
+# end
+
+# class << C
+#   def _singleton
+#     self
+#   end
+# end
+
+# p C._singleton
+
+# class C
+# end
+# p C.singleton_class
+
+# class Base
+#   def name
+#     p 'Base#name'
+#   end
+# end
+
+# module Scope
+#   class Base
+#     def name
+#       p 'Scope::Base#name'
+#     end
+#   end
+
+#   class Inherited < Base
+#     def name
+#       p 'Scope::Inherited#name'
+#       super()
+#     end
+#   end
+# end
+
+# inherited = Scope::Inherited.new
+# inherited.name
+# #=> Scope::Inherited#name
+# #=> Base#name
+
+# array = ["a", "b", "c"].map(&:freeze)
+# array = array.freeze
+
+# array.each do |chr|
+#   chr.upcase!
+# end
+
+# p array
+
+characters = ["a", "b", "c"]
+
+characters.each do |chr|
+  chr.freeze
+end
+
+upcased = characters.map do |chr|
+  chr.upcase
+end
+
+p upcased #=> [A,B,C]
+#=> 破壊的変更ではないため
