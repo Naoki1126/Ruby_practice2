@@ -9,3 +9,12 @@ MyClass = Class.new do
 end
 
 MyClass.new.my_method
+
+klass_object = nil
+
+ThirdClass = Class.new do |klass|
+    klass_object = klass
+    puts klass
+    puts klass.new
+    puts self
+end
