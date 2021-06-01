@@ -192,19 +192,25 @@
 
 # puts K.new.m1 400
 
-# p "Matz is my tEacher".scan(/ismy/).length
+# # p "Matz is my tEacher".scan(/ismy/).length
 
 
-class Array
-  def succ_each(step = 1)
-    return to_enum(__method__, step) unless block_given?
+# class Array
+#   def succ_each(step = 1)
+#     return to_enum(__method__, step) unless block_given?
 
-    each do |int|
-      yield int + step
-    end
-  end
-end
+#     each do |int|
+#       yield int + step
+#     end
+#   end
+# end
 
-[97, 98, 99].succ_each.map {|int|
-  p int.chr
-  }
+# [97, 98, 99].succ_each.map {|int|
+#   p int.chr
+#   }
+
+
+test = (1..100).each.lazy.chunk(&:even?)
+p test.first(5)
+p test.take(5)
+p test.take(5).force
