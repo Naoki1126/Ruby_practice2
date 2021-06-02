@@ -1107,3 +1107,55 @@ binding_obj = e1.instance_binding
 p eval "@instance_val", binding_obj
 p eval 'local_val',binding_obj
 p eval 'private_method',binding_obj
+
+p (1..100).each.lazy.chunk(&:even?).first(5)
+
+
+module M
+   def foo
+     super
+     puts "M#foo"
+   end
+ end
+ 
+ class C2
+   def foo
+     puts "C2#foo"
+   end
+ end
+ 
+ class C < C2
+   def foo
+     super
+     puts "C#foo"
+   end
+   include M
+ end
+
+#  p [1,2,3,4].map(&self.method(:*))
+
+ class C
+   def m1
+     200
+   end
+ end
+ 
+ module R
+   refine C do
+     def m1
+       300
+     end
+   end
+ end
+ 
+ using R
+ 
+ class C
+   def m1
+     100
+   end
+ end
+ 
+ puts C.new.m1
+ 
+ p p C.new.foo
