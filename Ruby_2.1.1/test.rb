@@ -60,22 +60,48 @@
 # p InstanceCountClass.instance_count #=10
 # p NewInstanceCountClass.instance_count #=> 10
 
-class InstanceCountClass
-    @instance_count = 0
+# class InstanceCountClass
+#     @instance_count = 0
 
-    def self.instance_count_up
-        @instance_count += 1 if @instance_count
+#     def self.instance_count_up
+#         @instance_count += 1 if @instance_count
+#     end
+
+#     def self.instance_count
+#         @instance_count
+#     end
+
+#     def initialize
+#         self.class.instance_count_up
+#     end
+# end
+
+# 5.times do
+#     InstanceCountClass.new
+# end
+
+# p InstanceCountClass.instance_count #=> 5
+
+# class NewInstanceCountClass < InstanceCountClass
+# end
+
+# p NewInstanceCountClass.instance_count #=> nil
+
+# 5.times do
+#     NewInstanceCountClass.new
+# end
+
+# p InstanceCountClass.instance_count #=> 5
+# p NewInstanceCountClass.instance_count #=> nil
+
+# class Klass
+#     def (p self).class_method #=> selfはKlass
+#         :class_method
+#     end
+# end
+
+class Klass
+    def Klass.class_method #=> ということはSelfをKlassに変えることもできる
+        :class_method
     end
-
-    def self.instance_count_up
-        @instance_count
-    end
-
-    def initialize
-        self.class.instance_count_up
-    end
-end
-
-5.times do
-    InstanceCountClass.new
 end
