@@ -112,22 +112,75 @@
 
 # p m.const
 
-module A
-    B = 42
+# module A
+#     B = 42
 
-    def f
-      21
-    end
-end
+#     def f
+#       21
+#     end
+# end
 
-A.module_eval do
-    def self.f
-        p B
-    end
-end
+# A.module_eval do
+#     def self.f
+#         p B
+#     end
+# end
 
-  B = 15
-  A.f
+#   B = 15
+#   A.f
 
-  10.times{|d| print d < 2...d > 5 ? "O" : "X" }
+#   10.times{|d| print d < 2...d > 5 ? "O" : "X" }
   
+#   #左辺がtrueを返すまで左の評価を続け、trueが返却されれば右の評価に移る。右辺がtrueを返すまでtrueが続き、右辺がtrueを返したら左の式を通常評価する。
+
+
+
+#   f = Fiber.new do |total|
+#     Fiber.yield total + 10
+#   end
+# puts ""
+# p f.resume(100)
+# p f.resume(5)
+
+
+# fiber = Fiber.new{ |first|
+#     puts first
+#     second = Fiber.yield('goodbye')
+#     puts second
+#     puts second
+#     'goodbya(again)'
+# }
+
+# puts fiber.resume("hello")
+# #=> first => hello
+# #=> puts fiber.resume("hello") #=> goobye
+# puts fiber.resume('hello(again)')
+
+
+class Human
+    attr_reader :name
+  
+    alias_method :original_name, :name
+  
+    def name
+      "Mr. " + original_name
+    end
+  
+    def initialize(name)
+      @name = name
+    end
+  end
+  
+  human = Human.new("Andrew")
+  puts human.name
+
+  class Person
+    attr_reader :name
+    def initialize(name)
+        @name = name
+    end
+
+end
+
+p1 = Person.new("taro")
+puts p1.name
