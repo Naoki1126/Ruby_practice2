@@ -150,17 +150,60 @@
 # p t1.unique_method #=> unique_method
 # p t2.unique_method #=> No Method Error
 
+# class EvalTarget
+#   CONST_VAL = "EvalTarget::CONST"
+#   attr_accessor :instance_val
+# end
+
+# CONST_VAL = "CONST"
+
+
+# e1 = EvalTarget.new
+# e1.instance_eval{ @instance_val = CONST_VAL}
+# puts e1.instance_val
+
+# e1.instance_exec(CONST_VAL) {|const_val| @instance_val = const_val }
+# puts e1.instance_val
+
+
+
 class EvalTarget
-  CONST_VAL = "EvalTarget::CONST"
-  attr_accessor :instance_val
 end
 
-CONST_VAL = "CONST"
-
-
 e1 = EvalTarget.new
-e1.instance_eval{ @instance_val = CONST_VAL}
-puts e1.instance_val
+e1.instance_eval do
 
-e1.instance_exec(CONST_VAL) {|const_val| @instance_val = const_val }
-puts e1.instance_val
+  def hello
+    p "hello"
+  end
+end
+
+e1.hello
+
+EvalTarget.instance_eval do
+  def goodbye
+    p "goodbye"
+    p self
+  end
+
+  def self.greet
+    p "greet"
+  end
+end
+
+EvalTarget.class_eval do
+  def say
+    p "say"
+  end
+end
+
+EvalTarget.class_eval do
+  def self.taro
+    p "taro"
+  end
+end
+
+
+EvalTarget.goodbye
+EvalTarget.greet
+EvalTarget.new.say
