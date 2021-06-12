@@ -820,15 +820,48 @@
 
 # p array
 
-characters = ["a", "b", "c"]
+# characters = ["a", "b", "c"]
 
-characters.each do |chr|
-  chr.freeze
-end
+# characters.each do |chr|
+#   chr.freeze
+# end
 
-upcased = characters.map do |chr|
-  chr.upcase
-end
+# upcased = characters.map do |chr|
+#   chr.upcase
+# end
 
-p upcased #=> [A,B,C]
-#=> 破壊的変更ではないため
+# p upcased #=> [A,B,C]
+# #=> 破壊的変更ではないため
+
+
+# class MyClass
+
+#   def hello
+#     hello
+#   end
+# end
+
+
+# MyClass.class_eval do
+
+# end
+
+
+# class A
+#   CONST = 100
+
+#   class B
+#     CONST = 10
+#   end
+
+#   class C < B
+
+#     def const
+#       p CONST
+#     end
+#   end
+
+# end
+
+# c = C.new
+# c.const
