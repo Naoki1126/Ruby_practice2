@@ -134,17 +134,195 @@
 # c.hoge
 
 
-%r|(http://www(\.)(.*)/)| =~ "http://www.abc.com/"
-p $0
-p $1
-p $2
-p $3
+# %r|(http://www(\.)(.*)/)| =~ "http://www.abc.com/"
+# p $0
+# p $1
+# p $2
+# p $3
 
-require "date"
+# require "date"
 
-date = Date.new(2000,10,10)
-p date
-puts date
+# date = Date.new(2000,10,10)
+# p date
+# puts date
 
-p date << 3
-p date >> 3
+# p date << 3
+# p date >> 3
+
+
+# [1,2,3].each do |i|
+#     num = i
+# end
+
+# puts num
+
+# a = 1.0 + 1
+# print a
+# p a.class #=> Float
+# a = a + (1/2r)
+# print a
+# puts a.class #=> Froat
+# a = a + (1 + 2i)
+# print a
+# puts a.class #=> Comprex
+# p Integer.superclass #=> Numeric
+# p Complex.superclass #=> Numerics
+# p Rational.superclass #=> Numeric
+# p Float.superclass #=> Numeric
+# p Fixnum.superclass #=> Integer
+# p Numeric.superclass #=> Object
+
+# p 1.class #=> Fixnum
+# p 2r.class #=> Rational
+# p (1/2r).class #=> Rational
+
+
+# class A
+#     private
+#     def hoge
+#         puts "A"
+#     end
+# end
+
+# class B < A
+#     public :hoge
+
+#     # def hoge
+#     #     puts "B"
+#     # end
+# end
+
+# B.new.hoge #=> A
+
+# ary = Array.new(3,"a")
+# p ary
+# ary.map{ |num| p num.object_id}
+# ary[0].next!
+# p ary #=> [b,b,b]
+
+
+# Thread.fork do
+# end
+
+# class Hoge
+#     def fuga(o = nil)
+#         hoge
+#     end
+
+#     private
+#     def hoge
+#         puts "Hoge"
+#     end
+# end
+
+# Hoge.new.fuga(Hoge.new)
+
+
+# begin
+#     "cat".narrow
+# rescue NameError
+#     raise
+# end
+
+
+# while DATA.gets
+#     puts $_ if $_ =~ /Ruby/
+# end
+
+# __END__
+# java programming
+# Ruby programming
+# C programming
+
+# def method
+#     puts "Hello World"
+# end
+
+# alias :old_method :method
+
+# def method
+#     old_method
+#     puts "Hello Ruby"
+# end
+
+
+# method
+
+
+# class A
+#     @@x = 0
+#     class << self
+#         @@x = 1
+
+#         def x
+#             @@x
+#         end
+
+#     end
+
+#     def x
+#         @@x = 2
+#     end
+# end
+
+# class B < A
+#     @@x = 3
+# end
+
+
+# p A.x
+# p B.x
+
+# module M
+#     def hoge
+#         puts "hoge"
+#     end
+
+# end
+
+# class A
+#     extend M
+# end
+
+
+# A.hoge
+
+# class A
+#     $a = self
+
+#     def hoge
+#         $b = self
+#     end
+
+# end
+
+# a = A.new
+# a.hoge
+# p A == $a
+# p A.new == $b
+# puts $b
+
+# require 'date'
+
+# d1 = DateTime.new
+# d2 = DateTime.new
+
+# # p (d2-d1).class #=> Rational
+
+# require 'active_support/core_ext/class/subclasses'
+
+# p Integer.subclass
+
+
+class Class
+	def subclasses
+		subclasses = []
+		ObjectSpace.each_object(singleton_class) do |k|
+			subclasses << k if k.superclass == self
+		end
+		subclasses
+	end
+end
+
+p Integer.subclasses #=> [Bignum, Fixnum]
+p Rational.subclasses

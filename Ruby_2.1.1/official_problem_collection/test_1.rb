@@ -32,8 +32,58 @@
 
 
 
+1: 1
+2: 1,2,3 ×2,6
+3: 4
+4: 2 ×4
+5: 1,2,3
+6: 2,5 ×1,4,5
+7: 2 ×3
+8: 1
+9: 1
+10: 3
+11: 1
+12: 1 ×3
+13: 3 ×4
+14: 3
+15: 1 ×2
+16: 2
+17: 1 ×3
+18: 3 ×2
+19: 3 ×3,5
+20: 2
+21: 4
+22: 1
+23: 5 ×4
+24: 1,3 ×1
+25: 1 ×2
+26: 3 ×4
+27: 4 
+28: 1
+29: 2 ×1
+30: 1 ×3
+31: 1,3,4 ×1,3
+32: 2 ×2,3
+33: 2 ×3
+34: 2 ×1
+35: 1,3 ×3
+36: 3
+37: 1 ×1,2
+38: 1
+39: 4 ×1,4
+40: 1,2,
+41: 1
+42: 1 ×2
+43: 1,3
+44: 4
+45: 1,3 ×1,4
+46: 4
+47: ×1,2,4 
+48: 1,3
+49: 3
+50: 2,4 ×1,4
 
-
+ 23/50 #=> 46
 
 
 
@@ -51,21 +101,23 @@
 # x, *y = *[0,1,2]
 # p x,y
 
-x = 0,1,2
-p x.class
+# x = 0,1,2
+# p x.class
 
-x = *[1,2,3]
-p x.class
+# x = *[1,2,3]
+# p x.class
 
-class Err1 < StandardError; end
-class Err2 < Err1; end
-begin
-    raise Err1
-rescue => e
-    puts e.class
-    puts "StandardError"
-rescue Err2 => ex
-    puts ex.class
-end
+# class Err1 < StandardError; end
+# class Err2 < Err1; end
+# begin
+#     raise Err1
+# rescue => e
+#     puts e.class
+#     puts "StandardError"
+# rescue Err2 => ex
+#     puts ex.class
+# end
+
+
 
 
