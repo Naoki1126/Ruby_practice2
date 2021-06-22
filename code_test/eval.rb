@@ -167,43 +167,60 @@
 
 
 
-class EvalTarget
-end
+# class EvalTarget
+# end
 
-e1 = EvalTarget.new
-e1.instance_eval do
+# e1 = EvalTarget.new
+# e1.instance_eval do
 
-  def hello
-    p "hello"
-  end
-end
+#   def hello
+#     p "hello"
+#   end
+# end
 
-e1.hello
+# e1.hello
 
-EvalTarget.instance_eval do
-  def goodbye
-    p "goodbye"
-    p self
-  end
+# EvalTarget.instance_eval do
+#   def goodbye
+#     p "goodbye"
+#     p self
+#   end
 
-  def self.greet
-    p "greet"
-  end
-end
+#   def self.greet
+#     p "greet"
+#   end
+# end
 
-EvalTarget.class_eval do
-  def say
-    p "say"
-  end
-end
+# EvalTarget.class_eval do
+#   def say
+#     p "say"
+#   end
+# end
 
-EvalTarget.class_eval do
-  def self.taro
-    p "taro"
-  end
-end
+# EvalTarget.class_eval do
+#   def self.taro
+#     p "taro"
+#   end
+# end
 
 
-EvalTarget.goodbye
-EvalTarget.greet
-EvalTarget.new.say
+# EvalTarget.goodbye
+# EvalTarget.greet
+# EvalTarget.new.say
+
+
+# module Test1
+# end
+
+
+# class Test2
+#     Test1.module_eval(CODE)
+#       def self.output
+#           p Module.nesting
+#       end
+
+#     end
+
+# end
+
+# Test1::output
