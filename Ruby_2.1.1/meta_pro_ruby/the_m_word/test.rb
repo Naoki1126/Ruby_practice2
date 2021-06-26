@@ -119,11 +119,8 @@ p str.methods.grep(/title?/)
 p str.singleton_methods
 
 
-str.define_singleton_method
-
-    def check
-        self.upcase == str
-    end
+str.define_singleton_method(:check) do
+    self.upcase == self
 end
 
-str.check
+p str.check
