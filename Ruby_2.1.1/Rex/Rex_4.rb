@@ -138,3 +138,6 @@ class Array
   end
   
   p C._singleton
+
+
+  

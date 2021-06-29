@@ -16,7 +16,7 @@ class Computer
         component :keyboard
     end
 
-    def componet(name)
+    def component(name)
         info = @data_source.send "get_#{name}_info", @id
         price = @data_source.send "get_#{name}_price", @id
         result = "*#{name.capitalize}: #{info} ($#{price})"
