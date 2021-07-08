@@ -306,3 +306,16 @@ end
 # module M
 #     puts @@xx
 # end
+
+class C
+    def method_missing(name)
+        puts "メソッド#{name}は存在しませんよ"
+    end
+
+    def self.method_missing(name)
+        puts "メソッド#{name}は存在しません"
+    end
+end
+
+C.new.aaaa
+C.tnakan
